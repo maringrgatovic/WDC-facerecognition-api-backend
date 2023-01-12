@@ -8,6 +8,9 @@ const register = require('./controllers/register');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+const app = express();
+app.use(express.json());
+app.use(cors());
 
 const db = knex({
     client: 'pg',
@@ -20,13 +23,11 @@ const db = knex({
     }
 });
 
-db.select('*').from('users').then(data => {
-    //console.log(data);
-});
-
-const app = express();
-app.use(express.json());
-app.use(cors());
+db.select('*').from('users')
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => console.log(err));
 
 
 app.get('/', (req, res) => { res.send('it is working') });
@@ -38,5 +39,5 @@ app.put('/image', (req, res) => image.handleImage(req, res, db));
 app.post('/imageurl', (req, res) => image.handleApiCall(req, res));
 
 app.listen(3000, () => {
-    console.log(`app is running on port ${3000}`);
+    console.log(`app is running on port 3000`);
 })
