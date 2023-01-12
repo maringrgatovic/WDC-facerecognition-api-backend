@@ -15,11 +15,11 @@ app.use(cors());
 const db = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
+      host : 'dpg-cf02ej02i3mmhmdoqtqg-a',
       port: 5432,
-      user : 'postgres',
-      password : 'test',
-      database : 'smart-brain'
+      user : 'marin',
+      password : 'GlBplYOCQqNP8kOcDqyaxZf8ZHGCW5rT',
+      database : 'smartbrain_ypcq'
     }
 });
 
